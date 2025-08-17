@@ -1,0 +1,75 @@
+/* Configuración del esquema de colores de la página */
+:root {
+    color-scheme: light dark;
+    --primary-color: #0066cc;
+    --text-color: #333;
+    --background-color: #fff;
+}
+
+/* Modo oscuro */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --text-color: #fff;
+        --background-color: #1a1a1a;
+    }
+}
+
+/* Centrado del contenido en la página */
+body {
+    display: grid;
+    place-content: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 1rem;
+    color: var(--text-color);
+    background-color: var(--background-color);
+}
+
+/* Centrado horizontal de las imágenes */
+img {
+    margin: 0 auto;
+    max-width: 100%;
+    height: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Configuración del layout de las secciones */
+section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1rem;
+}
+
+/* Alineación central del grupo de información */
+hgroup {
+    justify-content: center;
+    text-align: center;
+    margin-top: 1.5rem;
+}
+
+/* Estilos para mensajes de error */
+.error-message {
+    color: #dc3545;
+    text-align: center;
+    padding: 1rem;
+    margin: 1rem 0;
+    border: 1px solid currentColor;
+    border-radius: 4px;
+}
+
+/* Estilos para la información de la película */
+.movie-info {
+    margin-top: 1rem;
+}
+
+.release-date {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+/* Mejoras de accesibilidad */
+:focus {
+    outline: 3px solid var(--primary-color);
+    outline-offset: 2px;
+}
