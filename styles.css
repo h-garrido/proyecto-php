@@ -1,4 +1,18 @@
-/* Configuración del esquema de colores de la página */
+/**
+ * Estilos de la Aplicación Web - Próxima Película de Marvel
+ * 
+ * Este archivo CSS define los estilos visuales de la aplicación, incluyendo:
+ * - Sistema de colores dinámico (modo claro/oscuro)
+ * - Efectos de gradiente animados
+ * - Diseño responsivo
+ * - Efectos visuales y animaciones
+ * - Accesibilidad mejorada
+ */
+
+/* Sistema de Variables CSS para Colores y Efectos
+ * Utilizamos CSS custom properties para mantener consistencia
+ * y facilitar cambios en toda la aplicación
+ */
 :root {
     color-scheme: light dark;
     --primary-color: #4f46e5;
@@ -25,7 +39,11 @@
     }
 }
 
-/* Centrado del contenido en la página */
+/* Diseño Principal del Cuerpo
+ * Implementa un diseño centrado con gradiente animado
+ * El gradiente utiliza 5 colores que se mueven suavemente
+ * creando un efecto visual dinámico
+ */
 body {
     display: grid;
     place-content: center;
@@ -111,7 +129,13 @@ img:hover {
     transform: scale(1.02);
 }
 
-/* Configuración del layout de las secciones */
+/* Estilo de Tarjeta con Efecto Glassmórfico
+ * Implementa un diseño de tarjeta moderna con:
+ * - Efecto de cristal esmerilado (backdrop-filter)
+ * - Borde suave con brillo
+ * - Sombras para profundidad
+ * - Animación de brillo rotativo
+ */
 section {
     display: flex;
     flex-direction: column;
