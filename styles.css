@@ -1,16 +1,27 @@
 /* Configuración del esquema de colores de la página */
 :root {
     color-scheme: light dark;
-    --primary-color: #0066cc;
+    --primary-color: #4f46e5;
     --text-color: #333;
-    --background-color: #fff;
+    --gradient-1: #c084fc;  /* Púrpura */
+    --gradient-2: #ff2400;  /* Escarlata */
+    --gradient-3: #818cf8;  /* Azul */
+    --gradient-4: #34d399;  /* Verde */
+    --gradient-5: #fcd34d;  /* Amarillo */
+    --card-bg: rgba(255, 255, 255, 0.15);
+    --backdrop-blur: 12px;
 }
 
 /* Modo oscuro */
 @media (prefers-color-scheme: dark) {
     :root {
         --text-color: #fff;
-        --background-color: #1a1a1a;
+        --gradient-1: #7c3aed;    /* Púrpura oscuro */
+        --gradient-2: #cc1e00;    /* Escarlata oscuro */
+        --gradient-3: #3730a3;    /* Azul oscuro */
+        --gradient-4: #059669;    /* Verde oscuro */
+        --gradient-5: #b45309;    /* Amarillo oscuro */
+        --card-bg: rgba(0, 0, 0, 0.2);
     }
 }
 
@@ -22,7 +33,68 @@ body {
     margin: 0;
     padding: 1rem;
     color: var(--text-color);
-    background-color: var(--background-color);
+    background: 
+        linear-gradient(
+            45deg,
+            var(--gradient-1) 0%,
+            var(--gradient-2) 25%,
+            var(--gradient-3) 50%,
+            var(--gradient-4) 75%,
+            var(--gradient-5) 100%
+        );
+    position: relative;
+    overflow-x: hidden;
+    animation: gradient-animation 15s ease infinite;
+    background-size: 300% 300%;
+}
+
+/* Efecto de fondo animado con mesh gradient */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(
+            circle at 0% 0%,
+            rgba(255, 255, 255, 0.1) 0%,
+            transparent 50%
+        ),
+        radial-gradient(
+            circle at 100% 100%,
+            rgba(255, 255, 255, 0.1) 0%,
+            transparent 50%
+        );
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* Animación del gradiente */
+@keyframes gradient-animation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Animación del gradiente */
+@keyframes gradient-shift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 /* Centrado horizontal de las imágenes */
@@ -30,7 +102,13 @@ img {
     margin: 0 auto;
     max-width: 100%;
     height: auto;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    border-radius: 16px;
+    transition: transform 0.3s ease;
+}
+
+img:hover {
+    transform: scale(1.02);
 }
 
 /* Configuración del layout de las secciones */
@@ -38,7 +116,42 @@ section {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 1rem;
+    padding: 1.5rem;
+    background: var(--card-bg);
+    backdrop-filter: blur(var(--backdrop-blur));
+    -webkit-backdrop-filter: blur(var(--backdrop-blur));
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.1),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(
+        circle at center,
+        rgba(255, 255, 255, 0.1) 0%,
+        transparent 65%
+    );
+    animation: shine 8s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes shine {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 /* Alineación central del grupo de información */
@@ -64,7 +177,7 @@ hgroup {
 }
 
 .release-date {
-    color: var(--primary-color);
+    color: rgba(253, 224, 224, 0.8);
     font-weight: 600;
 }
 
