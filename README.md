@@ -1,8 +1,8 @@
 # Próxima Película de Marvel (MCU)
 
-Esta es una aplicación web simple que muestra información sobre la próxima película del Universo Cinematográfico de Marvel (MCU). La aplicación obtiene datos en tiempo real de una API externa y los presenta en una interfaz limpia y minimalista.
+Esta es una aplicación web moderna que muestra información sobre la próxima película del Universo Cinematográfico de Marvel (MCU). La aplicación obtiene datos en tiempo real de una API externa y los presenta en una interfaz atractiva con efectos visuales modernos.
 
-## Características
+## 🚀 Características Principales
 
 - Muestra la próxima película del MCU
 - Indica los días restantes hasta el estreno
@@ -11,11 +11,21 @@ Esta es una aplicación web simple que muestra información sobre la próxima pe
 - Informa sobre la siguiente película programada
 - Diseño responsivo y minimalista
 
-## Tecnologías Utilizadas
+## 🎨 Características de Diseño
 
-- **PHP**: Para el manejo de la lógica del servidor y las peticiones a la API
-- **cURL**: Para realizar las peticiones HTTP a la API externa
-- **PicoCSS**: Framework CSS minimalista para el estilizado
+- Gradientes animados con 5 colores
+- Efecto glassmórfico en las tarjetas
+- Modo claro/oscuro automático
+- Animaciones suaves y transiciones
+- Efectos de hover interactivos
+- Diseño totalmente responsivo
+
+## 🛠 Tecnologías Utilizadas
+
+- **PHP 8+**: Para el manejo de la lógica del servidor
+- **cURL**: Para realizar las peticiones HTTP a la API
+- **PicoCSS**: Framework CSS minimalista
+- **CSS Moderno**: Variables CSS, animaciones, gradientes
 - **API**: [whenisthenextmcufilm.com](https://whenisthenextmcufilm.com/api)
 
 ## Requisitos
@@ -38,21 +48,48 @@ Esta es una aplicación web simple que muestra información sobre la próxima pe
    http://localhost/[ruta-al-proyecto]
    ```
 
-## Estructura del Proyecto
+## 📁 Estructura del Proyecto
 
 ```
 proyecto-php/
 │
-├── index.php      # Archivo principal que maneja la lógica y la visualización
-└── README.md      # Este archivo
+├── cache/              # Directorio para el caché de la API
+│
+├── sections/           # Componentes modulares de la interfaz
+│   ├── head.php       # Metadatos y enlaces CSS
+│   ├── main.php       # Contenido principal
+│   └── footer.php     # Pie de página
+│
+├── consts.php         # Constantes de configuración
+├── functions.php      # Funciones auxiliares y de API
+├── index.php          # Punto de entrada principal
+├── styles.css         # Estilos y animaciones
+└── README.md          # Esta documentación
 ```
 
-## Cómo Funciona
+## ⚙️ Configuración
 
-1. La aplicación realiza una petición a la API de whenisthenextmcufilm.com
-2. Los datos se reciben en formato JSON y se procesan
-3. La información se muestra en una interfaz limpia y fácil de leer
-4. Los estilos se aplican usando PicoCSS para una presentación minimalista
+Las principales configuraciones se encuentran en `consts.php`:
+
+- `API_URL`: URL de la API de Marvel
+- `CACHE_DURATION`: Duración del caché (por defecto 1 hora)
+- `CACHE_FILE`: Ubicación del archivo de caché
+
+## 🔐 Seguridad
+
+- Escape de datos HTML para prevenir XSS
+- Validación de respuestas de la API
+- Manejo de errores y excepciones
+- Sistema de caché para evitar sobrecarga de la API
+- Verificación SSL en peticiones
+
+## 🎯 Próximas Mejoras
+
+- [ ] Implementar sistema de logs
+- [ ] Agregar tests unitarios
+- [ ] Mejorar el manejo de errores
+- [ ] Agregar más efectos visuales
+- [ ] Implementar PWA
 
 ## Contribuir
 
