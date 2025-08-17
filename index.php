@@ -50,11 +50,12 @@ $data = fetchAPIData();
 ?>
 <!DOCTYPE html>
 <html lang="es">
+<?php render_template('head', $data) ?>
 
 <body>
-    <?php require 'sections/head.php'; ?>
-    <?php require 'sections/main.php'; ?>
-    <?php require 'sections/footer.php'; ?>
+    <?php require 'templates/header.php'; ?>
+    <?php require 'templates/main.php'; ?>
+    <?php require 'templates/footer.php'; ?>
 </body>
 
 </html>
