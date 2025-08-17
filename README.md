@@ -13,12 +13,14 @@ Esta es una aplicación web moderna que muestra información sobre la próxima p
 
 ## 🎨 Características de Diseño
 
-- Gradientes animados con 5 colores
-- Efecto glassmórfico en las tarjetas
+- Header con efecto glassmórfico y título con gradiente
+- Gradientes animados con 5 colores (incluyendo escarlata)
+- Efecto glassmórfico en las tarjetas y header
 - Modo claro/oscuro automático
 - Animaciones suaves y transiciones
 - Efectos de hover interactivos
 - Diseño totalmente responsivo
+- Sistema de color coherente en toda la aplicación
 
 ## 🛠 Tecnologías Utilizadas
 
@@ -55,8 +57,9 @@ proyecto-php/
 │
 ├── cache/              # Directorio para el caché de la API
 │
-├── sections/           # Componentes modulares de la interfaz
+├── templates/          # Componentes modulares de la interfaz
 │   ├── head.php       # Metadatos y enlaces CSS
+│   ├── header.php     # Encabezado de la aplicación
 │   ├── main.php       # Contenido principal
 │   └── footer.php     # Pie de página
 │
@@ -66,6 +69,25 @@ proyecto-php/
 ├── styles.css         # Estilos y animaciones
 └── README.md          # Esta documentación
 ```
+
+### Componentes Principales
+
+1. **Header (header.php)**
+   - Título de la aplicación con efecto de gradiente
+   - Subtítulo informativo
+   - Diseño glassmórfico
+
+2. **Contenido Principal (main.php)**
+   - Póster de la película
+   - Información de estreno
+   - Contador de días
+   - Datos de la siguiente película
+
+3. **Estilos (styles.css)**
+   - Sistema de colores dinámico (claro/oscuro)
+   - Gradientes animados
+   - Efectos glassmórficos
+   - Diseño responsivo
 
 ## ⚙️ Configuración
 
