@@ -24,17 +24,22 @@ Esta es una aplicación web moderna que muestra información sobre la próxima p
 
 ## 🛠 Tecnologías Utilizadas
 
-- **PHP 8+**: Para el manejo de la lógica del servidor
+- **PHP 7.4+**: Para el manejo de la lógica del servidor y tipos estrictos
 - **cURL**: Para realizar las peticiones HTTP a la API
-- **PicoCSS**: Framework CSS minimalista
-- **CSS Moderno**: Variables CSS, animaciones, gradientes
+- **PicoCSS 2.0**: Framework CSS minimalista y moderno
+- **CSS Moderno**: Variables CSS, animaciones, gradientes, glassmorphism
 - **API**: [whenisthenextmcufilm.com](https://whenisthenextmcufilm.com/api)
+- **HTML5**: Estructura semántica y accesible
+- **Sistema de Caché**: Optimización de rendimiento
+- **Responsive Design**: Mobile-first approach
 
 ## Requisitos
 
-- PHP 7.0 o superior
+- PHP 7.4 o superior (recomendado PHP 8+)
 - Extensión cURL habilitada en PHP
 - Servidor web (Apache, Nginx, etc.)
+- Permisos de escritura en el directorio `/cache`
+- Navegador moderno con soporte para CSS Grid y Variables CSS
 
 ## Instalación
 
@@ -56,18 +61,24 @@ Esta es una aplicación web moderna que muestra información sobre la próxima p
 proyecto-php/
 │
 ├── cache/              # Directorio para el caché de la API
+│   └── api_response.json  # Archivo de caché de respuestas
 │
-├── templates/          # Componentes modulares de la interfaz
-│   ├── head.php       # Metadatos y enlaces CSS
-│   ├── header.php     # Encabezado de la aplicación
-│   ├── main.php       # Contenido principal
-│   └── footer.php     # Pie de página
+├── config/            # Configuraciones del sistema
+│   ├── consts.php    # Constantes y configuraciones
+│   └── functions.php # Funciones auxiliares y de API
 │
-├── consts.php         # Constantes de configuración
-├── functions.php      # Funciones auxiliares y de API
-├── index.php          # Punto de entrada principal
-├── styles.css         # Estilos y animaciones
-└── README.md          # Esta documentación
+├── css/              # Estilos de la aplicación
+│   └── styles.css    # Estilos y animaciones CSS
+│
+├── templates/        # Componentes modulares de la interfaz
+│   ├── head.php     # Metadatos y enlaces CSS
+│   ├── header.php   # Encabezado de la aplicación
+│   ├── main.php     # Contenido principal
+│   ├── navbar.php   # Barra de navegación
+│   └── footer.php   # Pie de página
+│
+├── index.php        # Punto de entrada principal
+└── README.md        # Esta documentación
 ```
 
 ### Componentes Principales
@@ -104,14 +115,43 @@ Las principales configuraciones se encuentran en `consts.php`:
 - Manejo de errores y excepciones
 - Sistema de caché para evitar sobrecarga de la API
 - Verificación SSL en peticiones
+- Timeout configurado para peticiones API
+- Headers HTTP seguros
+- Protección contra inyección de código
+- Manejo seguro de archivos de caché
+
+## 🌐 Accesibilidad
+
+- Roles ARIA implementados
+- Alto contraste y modo oscuro
+- Estructura HTML semántica
+- Focus visible en elementos interactivos
+- Textos alternativos para imágenes
+- Navegación por teclado
+- Mensajes de error claros
 
 ## 🎯 Próximas Mejoras
 
-- [ ] Implementar sistema de logs
-- [ ] Agregar tests unitarios
-- [ ] Mejorar el manejo de errores
-- [ ] Agregar más efectos visuales
-- [ ] Implementar PWA
+- [ ] Implementar sistema de logs detallado
+- [ ] Agregar tests unitarios y de integración
+- [ ] Mejorar el manejo de errores y logging
+- [ ] Agregar más efectos visuales y animaciones
+- [ ] Implementar PWA para uso offline
+- [ ] Optimización de rendimiento y compresión de assets
+- [ ] Integración con CI/CD
+- [ ] Panel de administración
+- [ ] Caché con Redis/Memcached
+- [ ] Dockerización del proyecto
+
+## 🔄 Performance
+
+- Sistema de caché eficiente
+- Carga lazy de imágenes
+- CSS y HTML optimizados
+- Compresión de respuestas HTTP
+- Minimización de peticiones a la API
+- Assets optimizados
+- Tiempo de respuesta rápido
 
 ## Contribuir
 
