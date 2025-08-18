@@ -1,0 +1,59 @@
+# Archivos y directorios del sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Archivos de caché de PHP
+*.log
+cache/*
+!cache/.gitkeep
+
+# Archivos de entorno y configuración local
+.env
+.env.local
+.env.*.local
+config.local.php
+
+# Directorios de dependencias
+/vendor/
+/node_modules/
+
+# Archivos de IDE y editores
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+*.komodoproject
+.komodotools/
+*.code-workspace
+
+# Archivos de respaldo
+*.bak
+*.swp
+*~
+*.save
+
+# Archivos de sesión de PHP
+/sessions/
+sess_*
+
+# Archivos temporales
+*.tmp
+*.temp
+*.cache
+
+# Archivos de configuración local de PHP
+php.ini
+.user.ini
+
+# Archivos de certificados SSL locales
+*.pem
+*.key
+*.crt
+
+# Otros archivos y carpetas específicos del proyecto
+/logs/
+/temp/
+/tmp/
+.phpunit.result.cache
+composer.phar
