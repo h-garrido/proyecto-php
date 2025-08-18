@@ -20,7 +20,7 @@
 declare(strict_types=1);
 
 // Configuración de la aplicación
-require_once 'consts.php';
+require_once 'config/consts.php';
 
 /**
  * Obtiene los datos de la próxima película de Marvel desde la API
@@ -39,7 +39,7 @@ require_once 'consts.php';
  * 
  * @return array|null Retorna los datos de la API como array asociativo, o null si hay error
  */
-require_once 'functions.php';
+require_once 'config/functions.php';
 
 
 // Obtener datos
@@ -53,9 +53,9 @@ $data = fetchAPIData();
 <?php render_template('head', $data) ?>
 
 <body>
-    <?php require 'templates/header.php'; ?>
-    <?php require 'templates/main.php'; ?>
-    <?php require 'templates/footer.php'; ?>
+    <?php render_template('header', $data) ?>
+    <?php render_template('main', $data) ?>
+    <?php render_template('footer', $data) ?>
 </body>
 
 </html>
