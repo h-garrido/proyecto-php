@@ -16,52 +16,6 @@ require_once 'config/functions.php';
 $data = fetchAPIData();
 
 // Procesar los datos para los próximos estrenos
-function processUpcomingMovies(?array $data): array
-{
-    if (!$data) {
-        return [];
-    }
-
-    $movies = [];
-
-    // Añadir la próxima película
-    if (isset($data['release_date'])) {
-        $movies[] = [
-            'title' => $data['title'],
-            'release_date' => new DateTime($data['release_date']),
-            'poster_url' => $data['poster_url'] ?? '',
-            'days_until' => $data['days_until'],
-            'overview' => getMovieDescription($data['title']),
-            'is_next' => true
-        ];
-    }
-
-    // Añadir la película siguiente
-    if (isset($data['following_production']['release_date'])) {
-        $movies[] = [
-            'title' => $data['following_production']['title'],
-            'release_date' => new DateTime($data['following_production']['release_date']),
-            'poster_url' => $data['following_production']['poster_url'] ?? '',
-            'days_until' => $data['following_production']['days_until'] ?? null,
-            'overview' => getMovieDescription($data['following_production']['title']),
-            'is_next' => false
-        ];
-    }
-
-    return $movies;
-}
-
-// Función para obtener una descripción de la película
-function getMovieDescription(string $title): string
-{
-    // Aquí podrías integrar con otra API para obtener sinopsis
-    // Por ahora retornamos un texto genérico
-    return "Prepárate para una nueva aventura épica en el Universo Cinematográfico de Marvel " .
-        "con " . $title . ". Esta nueva entrega promete llevar la saga a nuevos horizontes " .
-        "con emocionantes secuencias de acción y una historia cautivadora que expandirá " .
-        "los límites del MCU.";
-}
-
 $movies = processUpcomingMovies($data);
 
 ?>
@@ -70,9 +24,10 @@ $movies = processUpcomingMovies($data);
 <?php render_template('head', ['title' => 'Próximos Estrenos Marvel']); ?>
 
 <body>
-    <?php render_template('header', $data); ?>
-
-    <main class="container">
+    <div id="page-wrapper">
+        <?php render_template('header', $data); ?>
+        
+        <main class="container">
         <?php if (empty($movies)): ?>
             <div class="error-message" role="alert">
                 <p>Lo sentimos, no pudimos cargar la información de próximos estrenos en este momento.</p>
@@ -133,8 +88,8 @@ $movies = processUpcomingMovies($data);
             </section>
         <?php endif; ?>
     </main>
-
-    <?php render_template('footer', $data); ?>
+        <?php render_template('footer', $data); ?>
+    </div>
 </body>
 
 </html>

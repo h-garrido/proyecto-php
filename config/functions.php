@@ -95,3 +95,94 @@ function fetchAPIData(): ?array {
 function e(string|int $text): string {
     return htmlspecialchars((string)$text, ENT_QUOTES | ENT_HTML5, 'UTF-8');
 }
+
+/**
+ * Procesa los datos de películas para mostrar en el calendario y próximos estrenos
+ * 
+ * @param array|null $data Datos de la API
+ * @return array Array de películas procesadas
+ */
+function processUpcomingMovies(?array $data): array {
+    if (!$data) {
+        return [];
+    }
+
+    $movies = [];
+    
+    // Añadir la próxima película
+    if (isset($data['release_date'])) {
+        $movies[] = [
+            'title' => $data['title'],
+            'release_date' => new DateTime($data['release_date']),
+            'poster_url' => $data['poster_url'] ?? '',
+            'days_until' => $data['days_until'],
+            'overview' => getMovieDescription($data['title']),
+            'is_next' => true
+        ];
+    }
+
+    // Añadir la película siguiente
+    if (isset($data['following_production']['release_date'])) {
+        $movies[] = [
+            'title' => $data['following_production']['title'],
+            'release_date' => new DateTime($data['following_production']['release_date']),
+            'poster_url' => $data['following_production']['poster_url'] ?? '',
+            'days_until' => $data['following_production']['days_until'] ?? null,
+            'overview' => getMovieDescription($data['following_production']['title']),
+            'is_next' => false
+        ];
+    }
+
+    return $movies;
+}
+
+/**
+ * Genera una descripción para una película
+ * 
+ * @param string $title Título de la película
+ * @return string Descripción generada
+ */
+function getMovieDescription(string $title): string {
+    return "Prepárate para una nueva aventura épica en el Universo Cinematográfico de Marvel " .
+           "con " . $title . ". Esta nueva entrega promete llevar la saga a nuevos horizontes " .
+           "con emocionantes secuencias de acción y una historia cautivadora que expandirá " .
+           "los límites del MCU.";
+}
+
+/**
+ * Procesa los datos para el calendario de películas
+ * 
+ * @param array|null $data Datos de la API
+ * @return array Array de películas procesadas para el calendario
+ */
+function processMoviesForCalendar(?array $data): array {
+    if (!$data) {
+        return [];
+    }
+
+    $movies = [];
+    
+    // Añadir la próxima película
+    if (isset($data['release_date'])) {
+        $date = new DateTime($data['release_date']);
+        $movies[] = [
+            'title' => $data['title'],
+            'date' => $date,
+            'poster_url' => $data['poster_url'] ?? '',
+            'days_until' => $data['days_until']
+        ];
+    }
+
+    // Añadir la película siguiente
+    if (isset($data['following_production']['release_date'])) {
+        $date = new DateTime($data['following_production']['release_date']);
+        $movies[] = [
+            'title' => $data['following_production']['title'],
+            'date' => $date,
+            'poster_url' => $data['following_production']['poster_url'] ?? '',
+            'days_until' => $data['following_production']['days_until'] ?? null
+        ];
+    }
+
+    return $movies;
+}

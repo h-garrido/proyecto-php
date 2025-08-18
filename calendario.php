@@ -15,39 +15,6 @@ require_once 'config/functions.php';
 // Obtener datos de la API
 $data = fetchAPIData();
 
-// Procesar los datos para el calendario
-function processMoviesForCalendar(?array $data): array
-{
-    if (!$data) {
-        return [];
-    }
-
-    $movies = [];
-
-    // Añadir la próxima película
-    if (isset($data['release_date'])) {
-        $date = new DateTime($data['release_date']);
-        $movies[] = [
-            'title' => $data['title'],
-            'date' => $date,
-            'poster_url' => $data['poster_url'] ?? '',
-            'days_until' => $data['days_until']
-        ];
-    }
-
-    // Añadir la película siguiente
-    if (isset($data['following_production']['release_date'])) {
-        $date = new DateTime($data['following_production']['release_date']);
-        $movies[] = [
-            'title' => $data['following_production']['title'],
-            'date' => $date,
-            'poster_url' => $data['following_production']['poster_url'] ?? '',
-            'days_until' => $data['following_production']['days_until'] ?? null
-        ];
-    }
-
-    return $movies;
-}
 
 $movies = processMoviesForCalendar($data);
 
@@ -62,10 +29,10 @@ usort($movies, function ($a, $b) {
 <?php render_template('head', ['title' => 'Calendario de Películas Marvel']); ?>
 
 <body>
-    <?php render_template('header', $data); ?>
-
-
-    <main class="container">
+    <div id="page-wrapper">
+        <?php render_template('header', $data); ?>
+        
+        <main class="container">
         <?php if (empty($movies)): ?>
             <div class="error-message" role="alert">
                 <p>Lo sentimos, no pudimos cargar la información del calendario en este momento.</p>
@@ -106,8 +73,8 @@ usort($movies, function ($a, $b) {
             </section>
         <?php endif; ?>
     </main>
-
-    <?php render_template('footer', $data); ?>
+        <?php render_template('footer', $data); ?>
+    </div>
 </body>
 
 </html>
