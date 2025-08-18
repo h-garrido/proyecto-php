@@ -53,9 +53,11 @@ $data = fetchAPIData();
 <?php render_template('head', $data) ?>
 
 <body>
-    <?php render_template('header', $data) ?>
-    <?php render_template('main', $data) ?>
-    <?php render_template('footer', $data) ?>
+    <div id="page-wrapper">
+        <?php render_template('header', $data) ?>
+        <?php render_template('main', $data) ?>
+        <?php render_template('footer', $data) ?>
+    </div>
 </body>
 
 </html>
