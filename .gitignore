@@ -57,3 +57,4 @@ php.ini
 /tmp/
 .phpunit.result.cache
 composer.phar
+/cache/*.json
